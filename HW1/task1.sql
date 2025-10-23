@@ -4,6 +4,21 @@ USE hw_prog_1;
 
 -- Task 1.1: Create tables
 
+CREATE TABLE projects (
+    project_id INT NOT NULL PRIMARY KEY,
+    project_title VARCHAR(50),
+    department VARCHAR(50)
+);
+
+CREATE TABLE researchers(
+    researcher_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    position VARCHAR(50),
+    project_id INT,
+    CONSTRAINT project_id FOREIGN KEY (project_id) REFERENCES projects(project_id) 
+);
+
+
 
 -- Task 1.2: Insert Data
 
