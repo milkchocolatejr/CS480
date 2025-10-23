@@ -21,7 +21,21 @@ CREATE TABLE researchers(
 
 
 -- Task 1.2: Insert Data
+INSERT INTO projects (project_id, project_title, department)
+VALUES 
+    (1, "Brain Scan", "Neuroscience"),
+    (2, "Cryptography", "CS"),
+    (3, "AI Project", "AI Lab"),
+    (4, "Bio Signal", "Biomedical");
 
+INSERT INTO researchers (researcher_id, name, position, project_id)
+VALUES
+    (1, "Alice", "PhD", 1),
+    (2, "Ben", "Postdoc", 1),
+    (3, "Cara", "Assistant", 2),
+    (4, "David", "PhD", 3),
+    (5, "Eva", "Postdoc", 3),
+    (6, "Frank", "Assistant", 4);
 
 -- Display all tables after Task 1.2
 SELECT * FROM projects ORDER BY project_id ASC;
@@ -29,7 +43,13 @@ SELECT * FROM researchers ORDER BY researcher_id ASC;
 
 
 -- -- Task 1.3: Update tables
+UPDATE projects
+SET department = "Bio Eng"
+WHERE project_title = "Bio Signal";
 
+UPDATE researchers
+SET position = "Senior Assistant"
+WHERE name = "Cara";
 
 -- -- Display all tables after Task 1.3
 SELECT * FROM projects ORDER BY project_id ASC;
