@@ -58,21 +58,36 @@ SELECT * FROM researchers ORDER BY researcher_id ASC;
 
 -- -- Task 1.4: Delete operations
 
+DELETE FROM projects
+WHERE project_id = 2
 
+DELETE FROM researchers
+WHERE researcher_id = 1
 
 -- Display all tables after Task 1.4
 SELECT * FROM projects ORDER BY project_id ASC;
 SELECT * FROM researchers ORDER BY researcher_id ASC;
 
 
-
 -- Task 1.5: Show all projects from the Computer Science department, ordered by project_id in ascending order.
 
+SELECT project_id, project_title, department
+FROM projects
+WHERE department = "AI Lab"
+ORDER BY project_id ASC;
 
 
 -- Task 1.6: Show all researchers who are `Postdoc`, ordered by researcher_id in ascending order.
 
-
+SELECT researcher_id, name, position, project_id
+FROM researchers
+WHERE position = "Postdoc"
+ORDER BY researcher_id ASC;
 
 -- Task 1.7: Show the name of each researcher along with their project title, ordered by researcher_name in ascending order.
 
+SELECT researchers.name, projects.project_title
+FROM researchers 
+    LEFT JOIN projects
+    ON researchers.project_id = projects.project_id
+ORDER BY researchers.name ASC;
