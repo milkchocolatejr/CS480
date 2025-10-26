@@ -15,7 +15,7 @@ CREATE TABLE researchers(
     name VARCHAR(50),
     position VARCHAR(50),
     project_id INT,
-    CONSTRAINT project_id FOREIGN KEY (project_id) REFERENCES projects(project_id) 
+    FOREIGN KEY (project_id) REFERENCES projects(project_id) 
 );
 
 
@@ -59,10 +59,10 @@ SELECT * FROM researchers ORDER BY researcher_id ASC;
 -- -- Task 1.4: Delete operations
 
 DELETE FROM projects
-WHERE project_id = 2
+WHERE project_id = 2;
 
 DELETE FROM researchers
-WHERE researcher_id = 1
+WHERE researcher_id = 1;
 
 -- Display all tables after Task 1.4
 SELECT * FROM projects ORDER BY project_id ASC;

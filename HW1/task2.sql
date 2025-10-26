@@ -36,19 +36,54 @@ INSERT INTO Publication VALUES
 
 -- Task 2.1: Total citations per venue, ordered by venue_name in ascending order.
 
+SELECT 
+    Venue.name AS "venue_name",
+    SUM(Publication.Citations) AS "total_citations"
+FROM Publication
+    LEFT JOIN Venue 
+        ON Venue.venue_id = Publication.venue_id
+GROUP BY Venue.venue_id
+ORDER BY Venue.name ASC;
 
 
 -- Task 2.2: Average citations per author, ordered by author in ascending order.
 
+SELECT
+    author,
+    AVG(citations) AS "avg_citations"
+FROM Publication
+GROUP BY author
+ORDER BY author ASC;
 
 
 -- Task 2.3: Total citations for all conference publications
 
-
+SELECT
+    SUM(Publication.citations) as "conference_citations"
+FROM Publication
+    LEFT JOIN Venue 
+        ON Venue.venue_id = Publication.venue_id
+WHERE Venue.type = "Conference";
 
 -- Task 2.4 Average citations per venue type (Journal vs Conference), ordered by venue type in ascending order.
 
+SELECT
+    Venue.type as 'type',
+    AVG(Publication.citations) as "avg_citations"
+FROM Publication
+    LEFT JOIN Venue 
+        ON Venue.venue_id = Publication.venue_id
+GROUP BY Venue.type
+ORDER BY Venue.type ASC;
 
 
 -- Task 2.5 Authors with total citations above 150, ordered by author in ascending order.
 
+SELECT
+    Publication.author as "author",
+    SUM(Publication.citations) as "total_citations"
+FROM Publication
+    LEFT JOIN Venue 
+        ON Venue.venue_id = Publication.venue_id
+GROUP BY Publication.author
+HAVING SUM(Publication.citations) > 150;
