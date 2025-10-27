@@ -15,7 +15,9 @@ CREATE TABLE researchers(
     name VARCHAR(50),
     position VARCHAR(50),
     project_id INT,
-    FOREIGN KEY (project_id) REFERENCES projects(project_id) 
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
 );
 
 
@@ -86,7 +88,9 @@ ORDER BY researcher_id ASC;
 
 -- Task 1.7: Show the name of each researcher along with their project title, ordered by researcher_name in ascending order.
 
-SELECT researchers.name, projects.project_title
+SELECT
+    researchers.name as "researcher_name",
+    projects.project_title as "project_title"
 FROM researchers 
     LEFT JOIN projects
     ON researchers.project_id = projects.project_id
