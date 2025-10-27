@@ -92,6 +92,6 @@ SELECT
     researchers.name as "researcher_name",
     projects.project_title as "project_title"
 FROM researchers 
-    LEFT JOIN projects
+    JOIN projects
     ON researchers.project_id = projects.project_id
 ORDER BY researchers.name ASC;
